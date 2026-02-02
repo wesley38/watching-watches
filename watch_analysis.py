@@ -71,7 +71,7 @@ def condition_plot(file_path, step, watch_name):
     facet = sns.lmplot(df, x=x_label, y=y_label, hue='label', fit_reg=False, legend=False, palette=palette)
     plt.plot(median_years, median_prices, marker='x', color='#E040FB', markersize=12, label='Median', linestyle='dashed')
     plt.legend(loc='upper left')
-    plt.xticks(np.arange(min(year_of_prods), max(year_of_prods) + 1, 1))
+    plt.xticks(np.arange(min(year_of_prods), max(year_of_prods) + 1, 1), rotation=45)
     plt.yticks(np.arange(min(prices) // step * step, max(prices) // step * step + 1, step))
     plt.title(f"{watch_name} Pricing and Condition")
     plt.savefig("scatter.png", dpi=300, bbox_inches='tight')
@@ -79,13 +79,15 @@ def condition_plot(file_path, step, watch_name):
 
     facet = sns.lmplot(df2, x=x_label, y=y_label, hue='label', fit_reg=False, legend=False)
     plt.legend(loc='upper left')
-    plt.xticks(np.arange(min(year_of_prods), max(year_of_prods) + 1, 1))
+    plt.xticks(np.arange(min(year_of_prods), max(year_of_prods) + 1, 1), rotation=45, ha='right')
     plt.yticks(np.arange(min(prices) // step * step, max(prices) // step * step + 1, step))
     plt.title(f"{watch_name} Lister Country of Origin")
     plt.savefig("countries.png", dpi=300, bbox_inches='tight')
 
 def main():
     # condition_plot("5740_20250126.csv", 10000, 'Patek Phillipe 5740/1G-001')
-    condition_plot("5711-011_20250126.csv", 10000, 'Patek Phillipe 5711/1A-011')
+    # condition_plot("5711-011_20250126.csv", 10000, 'Patek Phillipe 5711/1A-011')
+    condition_plot("5712-001_20250202.csv", 10000, 'Patek Phillipe 5712/1A-001')
+
 
 main()
